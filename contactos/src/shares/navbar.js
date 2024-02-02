@@ -1,6 +1,8 @@
+import './../StyleSheets/NavBarStyles.css'
+
 function NavBarContacts(){
     return (
-        <nav>
+        <nav className='navbar-content'>
             <h1>CONTACTOS</h1>
             <ul>
             <li href="#">contactos</li>
