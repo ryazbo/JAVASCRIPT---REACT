@@ -16,9 +16,10 @@
             agregarOpcion(selectMunic, "default", "select");
             agregarOpcion(selectMunic, "CartIndias", "Cartagena de Indias");
             agregarOpcion(selectMunic, "BarrLoba", "Barranco de Loba");
+        }else{
+            agregarOpcion(selectMunic, "default", "No seleccionaste Departamento");
         }
     });
-    
     function agregarOpcion(select, valor, texto) {
         var opcion = document.createElement("option");
         opcion.value = valor;
