@@ -1,6 +1,7 @@
 .getall-container{
+    flex-wrap: wrap;
     position: absolute;
-    top: 25%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid grey;

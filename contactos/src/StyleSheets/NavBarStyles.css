@@ -1,10 +1,18 @@
 .navbar-content{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
-    align-items: baseline;
-    padding: 4px 60px 4px 60px;
     border-bottom: 2px solid grey;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 60px 0px 60px;
+}
+
+
+.title{
+    display: flex;
+}
+
+.routes{
+    display: flex;
 }

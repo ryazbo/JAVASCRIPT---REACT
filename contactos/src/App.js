@@ -11,17 +11,20 @@ function App() {
   return (
     <div className="App">
         <Router>
-        <div className='navbar-content'>
+        <div >
           {/* Navbar */}
-          <nav>
-          <h1>Contacts</h1>
-            <ul>
-                <li><Link to="/">home</Link></li>
-              <li><Link to="/addcontact">add</Link></li>
-              <li><Link to="/contacts">contacts</Link></li>
-            </ul>
-          </nav>
-  
+          <nav className='navbar-content'>
+            <div className='title'>
+              <h1>Contacts</h1>
+            </div>
+            <div className='routes'>
+              <ul>
+                  <li><Link to="/">home</Link></li>
+                  <li><Link to="/addcontact">add</Link></li>
+                  <li><Link to="/contacts">contacts</Link></li>
+              </ul>
+              </div>
+            </nav>  
           {/* Contenido de la aplicación */}
           <Routes>
             <Route path="/" element={<Present />} />
