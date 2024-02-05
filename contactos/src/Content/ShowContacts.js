@@ -45,7 +45,7 @@ function ShowContact() {
       <div className="container-from-showcontacts">
           <div className="search-contact-container">
             <h1>Tus Contactos</h1>
-            <input type="number" placeholder="Buscar por teléfono" id='searchNum' value={searchPhone} onChange={handleSearchTerms} />
+            <input type="number" placeholder="Buscar por teléfono" id='searchNum' value={searchPhone} onChange={handleSearchTerms} required/>
           </div>
         <div className="get-contacts-container">
           <table>
@@ -59,16 +59,26 @@ function ShowContact() {
               </tr>
             </thead>
             <tbody>
-              {filterbynumber.map((contact, index) =>
-                <tr key={index}>
-                  <td>{index + 1 }</td>
-                  <td>{contact.name}</td>
-                  <td>{contact.address}</td>
-                  <td>{contact.phone}</td>
-                  <td><ButtonsTable texto={'editar'} isEditButton={true} driveContact={editThisContact(contact.id)}/></td>
-                  <td><ButtonsTable texto={'delete'} isEditButton={false} driveContact={deleteThisContact(contact.id)}/></td>
+              {filterbynumber.length > 0 ? (
+                filterbynumber.map((contact, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{contact.name}</td>
+                    <td>{contact.address}</td>
+                    <td>{contact.phone}</td>
+                    <td>
+                      <ButtonsTable texto={'editar'} isEditButton={true} driveContact={editThisContact(contact.id)} />
+                    </td>
+                    <td>
+                      <ButtonsTable texto={'delete'} isEditButton={false} driveContact={deleteThisContact(contact.id)} />
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6">No contacts found. Please try again or add new contacts.</td>
                 </tr>
-              )} 
+              )}
             </tbody>
           </table>
         </div>
