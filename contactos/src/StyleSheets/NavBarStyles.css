@@ -16,3 +16,11 @@
 .routes{
     display: flex;
 }
+
+.navbar-content ul li {
+    -webkit-backface-visibility: none;
+    list-style-type: none;
+    text-decoration: none; 
+    text-decoration-line: none;
+    color:black;
+}

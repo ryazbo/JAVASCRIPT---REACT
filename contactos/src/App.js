@@ -1,39 +1,21 @@
-import './StyleSheets/NavBarStyles.css';
-import { BrowserRouter as Router, Link, Route,Routes } from 'react-router-dom';
-import ShowContacts from './Content/ShowContacts.js';
-import ContactAccess from './Content/Contactos.js'
-import Present from './Content/Present.js';
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ShowContact from './Content/ShowContacts';
+import ContactAccess from './Content/Contactos';
+import EditContact from './Content/ContactsDriver/EditContact'
 
 function App() {
-
-  
   return (
-    <div className="App">
-        <Router>
-        <div >
-          {/* Navbar */}
-          <nav className='navbar-content'>
-            <div className='title'>
-              <h1>Contacts</h1>
-            </div>
-            <div className='routes'>
-              <ul>
-                  <li><Link to="/">home</Link></li>
-                  <li><Link to="/addcontact">add</Link></li>
-                  <li><Link to="/contacts">contacts</Link></li>
-              </ul>
-              </div>
-            </nav>  
-          {/* Contenido de la aplicación */}
-          <Routes>
-            <Route path="/" element={<Present />} />
-            <Route path="/addcontact" element={<ContactAccess />} />
-            <Route path="/contacts" element={<ShowContacts />} />
-          </Routes>
-        </div>
-      </Router>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<ShowContact />} />
+          <Route path="/edit/:id" element={<EditContact />} />
+          <Route path="/addcontact" element={<ContactAccess />} />
+          {/* Agrega más rutas según sea necesario */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

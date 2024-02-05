@@ -1,68 +1,78 @@
 import React, { useState, useEffect } from "react";
+import Navbar from './../Shares/NavBar'
+import ButtonsTable from './ContactsDriver/ButtonsAct.js'
+import { useNavigate } from 'react-router-dom';
 import './../StyleSheets/ShowContacts.css';
 
 function ShowContact() {
+  let navigate = useNavigate();
   const [searchPhone, setSearchPhone] = useState("");
   const [contacts, setContacts] = useState([]);
-  const [contactResult, setContactResult] = useState(null);
+ 
+
+  const editThisContact = (id) => {
+    return () => {
+      navigate(`/edit/${id}`);
+    };
+  };
 
   useEffect(() => {
-    // Cargar los contactos desde el almacenamiento local al montar el componente
     const storedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
     setContacts(storedContacts);
   }, []);
 
-  const searchContact = (e) => {
-    e.preventDefault();
-    const result = contacts.find(contact => contact.phone === searchPhone);
-    setContactResult(result);
-    if (result) {
-      alert(`Contacto encontrado: ${result.name} - Teléfono: ${result.phone}`);
-    } else {
-      alert("Contacto no encontrado");
-    }
+
+  const deleteThisContact = (id) => {
+    return () => {
+      const updatedContacts = contacts.filter(contact => contact.id !== id); 
+      setContacts(updatedContacts);
+      localStorage.setItem('contacts', JSON.stringify(updatedContacts));
+      console.log(`Contacto con id ${id} borrado.`);
+    };
+  };
+
+  const filterbynumber = contacts.filter(contact => {
+    return contact.phone.includes(searchPhone);
+  });
+
+  const handleSearchTerms = (e) => {
+    setSearchPhone(e.target.value);
   };
 
   return (
-    <div className="getall-container">
-      <form onSubmit={searchContact} className="search-contact-container">
-        <div>
-          <h1>Contactos</h1>
-        </div>
-        <div>
-          <input
-            type="number"
-            placeholder="Ingrese el número telefónico"
-            value={searchPhone}
-            onChange={(e) => setSearchPhone(e.target.value)}
-            required
-            style={{ marginRight: 10 }}
-          />
-          <button type="submit">Buscar contacto</button>
-        </div>
-      </form>
-
-      {/* Mostrar todos los contactos */}
-      <div className="all-contacts-container">
-        <h2>Todos los contactos:</h2>
-        {contacts.map((contact, index) => (
-          <div key={index}>
-            <p>Nombre: {contact.name} &nbsp;</p>
-            <p>Teléfono: {contact.phone} &nbsp;</p>
-            <p>Dirección: {contact.address} &nbsp;</p>
+    <div>
+      <Navbar />
+      <div className="container-from-showcontacts">
+          <div className="search-contact-container">
+            <h1>Tus Contactos</h1>
+            <input type="number" placeholder="Buscar por teléfono" id='searchNum' value={searchPhone} onChange={handleSearchTerms} />
           </div>
-        ))}
-      </div>
-
-      {/* Mostrar el resultado de la búsqueda si existe */}
-      {contactResult && (
-        <div>
-          <p>Contacto Encontrado: &nbsp;</p>
-          <p>Nombre: {contactResult.name} &nbsp;</p>
-          <p>Teléfono: {contactResult.phone} &nbsp;</p>
-          <p>Dirección: {contactResult.address} &nbsp;</p>
+        <div className="get-contacts-container">
+          <table>
+            <thead>
+              <tr>
+                <th>cont</th>
+                <th>Nombre</th>
+                <th>address</th>
+                <th>number</th>
+                <th colSpan={2}>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filterbynumber.map((contact, index) =>
+                <tr key={index}>
+                  <td>{index + 1 }</td>
+                  <td>{contact.name}</td>
+                  <td>{contact.address}</td>
+                  <td>{contact.phone}</td>
+                  <td><ButtonsTable texto={'editar'} isEditButton={true} driveContact={editThisContact(contact.id)}/></td>
+                  <td><ButtonsTable texto={'delete'} isEditButton={false} driveContact={deleteThisContact(contact.id)}/></td>
+                </tr>
+              )} 
+            </tbody>
+          </table>
         </div>
-      )}
+      </div>
     </div>
   );
 }
