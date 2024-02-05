@@ -1,0 +1,27 @@
+.getall-container{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid grey;
+    border-radius: 5px;
+    width: 90%;
+    padding: 1px 8px 20px 20px;
+
+}
+
+.getall-stucture{
+    width: 100%;
+    border: 2px solid rgb(140 140 140);
+}
+tr,td,th{
+    border: 1px solid rgb(160 160 160);
+}
+
+.search-contact-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

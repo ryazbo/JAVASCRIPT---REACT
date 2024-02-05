@@ -1,9 +1,10 @@
+import './../StyleSheets/Present.css'
+
 function Present(){
-    return(
-        <div>
-            <h1>PRESENTACION</h1>
-            <p>Me presento, HOLAAAAAAAAAAAA</p>
-        </div>
+    return(    
+        <div className="home-container">
+            <h1>INDEX</h1>
+        </div>    
     );
 }
 

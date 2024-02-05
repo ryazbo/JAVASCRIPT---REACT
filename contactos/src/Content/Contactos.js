@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid'; //dar valores unicos aleatoriamente 
 import './../StyleSheets/Contactos.css'
 
+
 function ContactAccess() {
     const getData = () => {
         var data = localStorage.getItem('contacts');
@@ -40,17 +41,19 @@ function ContactAccess() {
   };
 
   return (
-    <div className="form-div-content">
-      <form id="formCreateContact" onSubmit={saveContact} className="form-contacts">
-        <h1>ContactAccess</h1>
-        <p>Ingrese el nombre de su nuevo contacto</p>
-        <input type="text" placeholder="nombre" onChange={(e) => setName(e.target.value)} required/>
-        <p>Ingrese el numero Telefonico de su nuevo contacto</p>
-        <input type="number" placeholder="telefono" onChange={(e) => setPhone(e.target.value)} required/>
-        <p>Ingrese el correo de su nuevo contacto</p>
-        <input type="email" placeholder="correo" onChange={(e) => setAddress(e.target.value)} required />
-        <button type="submit">crear contacto</button>
-      </form>
+    <div>
+      <div className="form-div-content">
+        <form id="formCreateContact" onSubmit={saveContact} className="form-contacts">
+          <h1>ContactAccess</h1>
+          <p>Ingrese el nombre de su nuevo contacto</p>
+          <input type="text" placeholder="nombre" onChange={(e) => setName(e.target.value)} required/>
+          <p>Ingrese el numero Telefonico de su nuevo contacto</p>
+          <input type="number" placeholder="telefono" onChange={(e) => setPhone(e.target.value)} required/>
+          <p>Ingrese el correo de su nuevo contacto</p>
+          <input type="email" placeholder="correo" onChange={(e) => setAddress(e.target.value)} required />
+          <button type="submit">crear contacto</button>
+        </form>
+      </div>
     </div>
   );
 }
