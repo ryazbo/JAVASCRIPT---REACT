@@ -1,9 +1,11 @@
+import Button from '@mui/material/Button';
+
 function ButtonsTable({ texto , isEditButton , driveContact}){
 
   return (
-    <button className={ isEditButton ? 'EditThisContact' : 'DeleteThisContact' } onClick={driveContact}>
+    <Button variant="contained" className={ isEditButton ? 'EditThisContact' : 'DeleteThisContact' } onClick={driveContact}>
       {texto}
-    </button>
+    </Button>
   );
 }
 

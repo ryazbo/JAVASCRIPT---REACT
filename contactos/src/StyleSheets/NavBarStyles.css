@@ -8,7 +8,6 @@
     padding: 0px 60px 0px 60px;
 }
 
-
 .title{
     display: flex;
 }
@@ -17,10 +16,14 @@
     display: flex;
 }
 
-.navbar-content ul li {
+
+.navlink{
     -webkit-backface-visibility: none;
     list-style-type: none;
     text-decoration: none; 
     text-decoration-line: none;
-    color:black;
+}
+
+.navbar-buttons{
+    display: table-column;
 }

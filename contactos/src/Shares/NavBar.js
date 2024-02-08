@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import './../StyleSheets/NavBarStyles.css'
+import './../StyleSheets/NavBarStyles.css';
+import Button from '@mui/material/Button';
 
 function Navbar() {
   return (
@@ -7,9 +8,10 @@ function Navbar() {
         <div>
             <h1>contacts</h1>
         </div>
-      <ul>
-        <li><Link to="/">See contacts</Link></li>
-        <li><Link to="/addcontact">Add Contact</Link></li>
+      <ul className='navbar-buttons'>
+        <Button variant="contained" className='navbar-button'><Link to="/"  className='navlink' >See contacts</Link></Button>
+        <Button variant="contained" className='navbar-button'><Link to="/addcontact" className='navlink'>Add Contact</Link></Button>
+        <Button variant="contained" className='navbar-button'><Link to="/material"  className='navlink'>material</Link></Button>
         {/* Agrega más enlaces según necesites */}
       </ul>
     </nav>

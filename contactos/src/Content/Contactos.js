@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid'; //dar valores unicos aleatoriamente 
 import './../StyleSheets/Contactos.css'
 import Navbar from './../Shares/NavBar'
-
+import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 
 function ContactAccess() {
     const getData = () => {
@@ -25,10 +26,19 @@ function ContactAccess() {
     e.preventDefault();
     var idVal = uuidv4();
     var obj = { id : idVal, name, phone, address };
+    alertt(obj.name);
     setContacts([...contacts, obj]);
     clearFormContact();
   };
 
+
+  const alertt = ( data ) => {
+    return(
+      <Alert variant="outlined" severity="success">
+        nigger {data} 
+    </Alert>
+    ); 
+  }
 
   useEffect(()=>{
     localStorage.setItem("contacts", JSON.stringify(contacts));
@@ -54,7 +64,7 @@ function ContactAccess() {
             <input type="number" placeholder="telefono" onChange={(e) => setPhone(e.target.value)} required/>
             <p>Ingrese el correo de su nuevo contacto</p>
             <input type="email" placeholder="correo" onChange={(e) => setAddress(e.target.value)} required />
-            <button type="submit">crear contacto</button>
+            <Button variant='contained' type="submit">crear contacto</Button>
           </form>
         </div>
       </div>

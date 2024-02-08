@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import './../../StyleSheets/EditContacts.css'
+import Button from '@mui/material/Button';
+
+
+
 
 function EditContact() {
     let navigate = useNavigate();
@@ -9,6 +13,8 @@ function EditContact() {
     if(!id){
         navigate('/');
     }
+
+    const location = useLocation();
 
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -55,8 +61,12 @@ function EditContact() {
                 <p>Correo</p>
                 <input className='input-from-editcontact' value={address} onChange={(e) => setAddress(e.target.value)} />
                 <div className='buttons-edit'>
-                    <button className='button-from-editcontact' type="submit">Actualizar</button>
-                    <button className='button-from-editcontact' type="button" onClick={returnToShowContacts}>Back</button>
+                    <Button variant="contained" className='button-from-editcontact' type="submit">Actualizar</Button>
+                    <Button variant="contained" className='button-from-editcontact' type="button" onClick={returnToShowContacts}>Back</Button>
+                </div>
+                <div>
+                <h2>Current Pathname: {location.pathname}</h2>
+                <p>Current Search: {location.search}</p>
                 </div>
             </form>
         </div>
